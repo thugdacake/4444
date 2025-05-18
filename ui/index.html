@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokyo Box</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="phone-container">
+        <div id="iphone-frame">
+            <!-- Status Bar -->
+            <div id="status-bar">
+                <div class="status-time">21:37</div>
+                <div class="status-icons">
+                    <i data-feather="wifi"></i>
+                    <i data-feather="battery"></i>
+                </div>
+            </div>
+            
+            <!-- Header -->
+            <div id="header">
+                <div class="logo">
+                    <h1>TOKYO BOX</h1>
+                </div>
+            </div>
+            
+            <!-- App Content -->
+            <div id="app-content">
+                <!-- Main Content -->
+                <div id="main-content">
+                    <!-- Home View -->
+                    <div id="home-view" class="view active">
+                        <h2>Recentes</h2>
+                        <div id="user-playlists" class="playlist-grid">
+                            <div class="playlist-item create-playlist">
+                                <div class="playlist-cover">
+                                    <i data-feather="plus"></i>
+                                </div>
+                                <div class="playlist-name">Nova Playlist</div>
+                            </div>
+                            <!-- Playlists will be inserted here dynamically -->
+                        </div>
+                    </div>
+                    
+                    <!-- Search View -->
+                    <div id="search-view" class="view">
+                        <div class="search-container">
+                            <div class="search-input-container">
+                                <i data-feather="search"></i>
+                                <input type="text" id="search-input" placeholder="Pesquisar músicas...">
+                                <div id="clear-search" class="hidden">
+                                    <i data-feather="x"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="search-results">
+                            <!-- Search results will be inserted here dynamically -->
+                        </div>
+                    </div>
+                    
+                    <!-- Library View -->
+                    <div id="library-view" class="view">
+                        <div class="tabs">
+                            <div class="tab active" data-tab="playlists">Playlists</div>
+                            <div class="tab" data-tab="favorites">Favoritos</div>
+                        </div>
+                        
+                        <div id="playlists-tab" class="tab-content active">
+                            <div id="library-playlists" class="playlist-grid">
+                                <!-- Playlists will be inserted here dynamically -->
+                            </div>
+                        </div>
+                        
+                        <div id="favorites-tab" class="tab-content">
+                            <div id="favorite-tracks">
+                                <!-- Favorite tracks will be inserted here dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Playlist View -->
+                    <div id="playlist-view" class="view">
+                        <div class="playlist-header">
+                            <div id="playlist-back">
+                                <i data-feather="chevron-left"></i> Voltar
+                            </div>
+                            <div class="playlist-info">
+                                <div id="current-playlist-cover" class="playlist-cover large"></div>
+                                <h2 id="current-playlist-name">Nome da Playlist</h2>
+                                <p id="current-playlist-info">0 músicas</p>
+                            </div>
+                        </div>
+                        <div id="playlist-tracks">
+                            <!-- Playlist tracks will be inserted here dynamically -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Player Bar -->
+                <div id="player-bar">
+                    <!-- Collapsed Player -->
+                    <div id="player-bar-collapsed" class="player-container">
+                        <div class="track-info">
+                            <div id="current-track-thumbnail" class="track-thumbnail"></div>
+                            <div class="track-details">
+                                <div id="current-track-title" class="track-title">Tokyo Box</div>
+                                <div id="current-track-artist" class="track-artist">Escolha uma música</div>
+                            </div>
+                        </div>
+                        <button id="play-pause-btn">
+                            <i data-feather="play"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Expanded Player -->
+                    <div id="player-bar-expanded" class="hidden">
+                        <div class="expanded-header">
+                            <button id="collapse-player-btn">
+                                <i data-feather="chevron-down"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="expanded-thumbnail">
+                            <div id="current-track-thumbnail-expanded" class="track-thumbnail large"></div>
+                        </div>
+                        
+                        <div class="track-info">
+                            <h2 id="current-track-title-expanded" class="track-title">Tokyo Box</h2>
+                            <p id="current-track-artist-expanded" class="track-artist">Escolha uma música</p>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div id="current-time" class="time-display">0:00</div>
+                            <div class="progress-bar">
+                                <div class="progress-background"></div>
+                                <div id="progress-fill" class="progress-fill"></div>
+                                <div id="progress-handle" class="progress-handle"></div>
+                            </div>
+                            <div id="total-time" class="time-display">0:00</div>
+                        </div>
+                        
+                        <div class="expanded-controls">
+                            <button id="previous-btn">
+                                <i data-feather="skip-back"></i>
+                            </button>
+                            <button id="play-pause-btn-expanded" class="play-btn">
+                                <i data-feather="play"></i>
+                            </button>
+                            <button id="next-btn">
+                                <i data-feather="skip-forward"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="volume-container">
+                            <i data-feather="volume-2"></i>
+                            <div class="volume-bar">
+                                <div class="volume-background"></div>
+                                <div id="volume-fill" class="volume-fill"></div>
+                                <div id="volume-handle" class="volume-handle"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="bluetooth-container">
+                            <div class="bluetooth-toggle">
+                                <span>Bluetooth (Compartilhar áudio)</span>
+                                <label class="switch">
+                                    <input type="checkbox" id="bluetooth-toggle">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="range-container">
+                            <span>Alcance de áudio: <span id="range-value">10</span>m</span>
+                            <div class="range-slider">
+                                <input type="range" id="range-slider" class="range" min="1" max="30" value="10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bottom Navigation -->
+                <div id="bottom-nav">
+                    <div class="nav-item active" data-view="home-view">
+                        <i data-feather="home"></i>
+                        <span>Início</span>
+                    </div>
+                    <div class="nav-item" data-view="search-view">
+                        <i data-feather="search"></i>
+                        <span>Buscar</span>
+                    </div>
+                    <div class="nav-item" data-view="library-view">
+                        <i data-feather="music"></i>
+                        <span>Biblioteca</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modals -->
+    <!-- Create Playlist Modal -->
+    <div id="create-playlist-modal" class="modal">
+        <div class="modal-content">
+            <h2>Nova Playlist</h2>
+            <div class="form-group">
+                <label for="playlist-name">Nome</label>
+                <input type="text" id="playlist-name" placeholder="Nome da playlist">
+            </div>
+            <div class="form-group">
+                <label for="playlist-description">Descrição</label>
+                <textarea id="playlist-description" placeholder="Descrição (opcional)"></textarea>
+            </div>
+            <div class="modal-buttons">
+                <button id="cancel-create-playlist" class="btn-secondary">Cancelar</button>
+                <button id="confirm-create-playlist" class="btn-primary">Criar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Track Options Modal -->
+    <div id="track-options-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="track-options-title">Nome da música</h2>
+            <div class="options-list">
+                <div id="option-play" class="option">
+                    <i data-feather="play-circle"></i>
+                    <span>Reproduzir</span>
+                </div>
+                <div id="option-add-to-playlist" class="option">
+                    <i data-feather="list"></i>
+                    <span>Adicionar à playlist</span>
+                </div>
+                <div id="option-toggle-favorite" class="option">
+                    <i data-feather="heart"></i>
+                    <span>Adicionar aos favoritos</span>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button id="cancel-track-options" class="btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add to Playlist Modal -->
+    <div id="add-to-playlist-modal" class="modal">
+        <div class="modal-content">
+            <h2>Adicionar à playlist</h2>
+            <div id="playlist-options" class="options-list">
+                <!-- Playlists will be inserted here dynamically -->
+            </div>
+            <div class="modal-buttons">
+                <button id="cancel-add-to-playlist" class="btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div class="notification-message">Notificação</div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="./components/player.js"></script>
+    <script src="./components/playlist.js"></script>
+    <script src="./components/search.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

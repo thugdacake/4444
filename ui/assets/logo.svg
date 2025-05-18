@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <!-- Galaxy Background -->
+  <defs>
+    <radialGradient id="galaxy-bg" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#6225E6" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#1C1543" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#0F0A29" stop-opacity="1"/>
+    </radialGradient>
+    
+    <linearGradient id="text-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4DC5FF" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#6225E6" stop-opacity="1"/>
+    </linearGradient>
+    
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Main Circle -->
+  <circle cx="150" cy="150" r="140" fill="url(#galaxy-bg)"/>
+  
+  <!-- Stars -->
+  <g class="stars">
+    <circle cx="70" cy="80" r="2" fill="white" opacity="0.8"/>
+    <circle cx="120" cy="60" r="1" fill="white" opacity="0.6"/>
+    <circle cx="200" cy="90" r="1.5" fill="white" opacity="0.7"/>
+    <circle cx="250" cy="150" r="2" fill="white" opacity="0.9"/>
+    <circle cx="220" cy="200" r="1" fill="white" opacity="0.6"/>
+    <circle cx="100" cy="220" r="1.5" fill="white" opacity="0.8"/>
+    <circle cx="160" cy="240" r="1" fill="white" opacity="0.7"/>
+    <circle cx="50" cy="170" r="1" fill="white" opacity="0.6"/>
+    <circle cx="180" cy="40" r="1" fill="white" opacity="0.5"/>
+    <circle cx="60" cy="130" r="1.5" fill="white" opacity="0.8"/>
+    <circle cx="230" cy="60" r="1" fill="white" opacity="0.6"/>
+    <circle cx="270" cy="120" r="1" fill="white" opacity="0.7"/>
+    <circle cx="90" cy="270" r="1.5" fill="white" opacity="0.8"/>
+    <circle cx="140" cy="30" r="1" fill="white" opacity="0.6"/>
+  </g>
+  
+  <!-- Music Note Icon with Glow -->
+  <g transform="translate(110, 90)" filter="url(#glow)">
+    <path d="M40 0 L40 60 C40 74 26 85 10 85 C-6 85 -20 74 -20 60 C-20 46 -6 35 10 35 C14 35 18 36 22 37 L22 0 L40 0 Z" 
+          fill="#4DC5FF" opacity="0.9"/>
+    <circle cx="10" cy="60" r="12" fill="#4DC5FF" opacity="0.9"/>
+  </g>
+
+  <!-- Tokyo Box Text -->
+  <text x="150" y="200" font-family="'Roboto', sans-serif" font-size="28" font-weight="bold" 
+        fill="url(#text-gradient)" text-anchor="middle" filter="url(#glow)">
+    TOKYO BOX
+  </text>
+</svg>
